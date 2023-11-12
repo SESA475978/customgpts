@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title>
+    <title>Coming Soon</title>
     <style>
         /* Add your CSS styles here */
         body {
@@ -11,54 +11,68 @@
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
             text-align: center;
-            padding: 20px;
         }
 
-        .section {
-            padding: 50px;
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #777;
+        }
+
+        .countdown {
+            font-size: 24px;
+            color: #555;
+            margin-top: 20px;
         }
 
         /* Customize your styles further */
     </style>
 </head>
 <body>
-    <header>
-        <h1>Your Website Name</h1>
-        <p>Welcome to our website</p>
-    </header>
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>We are working on something amazing and can't wait to share it with you!</p>
+        
+        <div class="countdown">
+            <p>Countdown to the big reveal:</p>
+            <div id="countdown"></div>
+        </div>
+    </div>
 
-    <section class="section" id="about">
-        <h2>About Us</h2>
-        <p>This is a brief description of your company or yourself. You can include your mission, values, and what makes you unique.</p>
-    </section>
+    <script>
+        // Add your countdown timer script here
+        // Replace the date below with your target launch date and time
+        var countDownDate = new Date("Dec 31, 2023 00:00:00").getTime();
 
-    <section class="section" id="services">
-        <h2>Our Services</h2>
-        <ul>
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
-        </ul>
-    </section>
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
 
-    <section class="section" id="portfolio">
-        <h2>Portfolio</h2>
-        <p>Showcase your work with images, descriptions, and links to your projects.</p>
-    </section>
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    <section class="section" id="contact">
-        <h2>Contact Us</h2>
-        <p>You can reach us at <a href="mailto:info@example.com">info@example.com</a> or via phone at (123) 456-7890.</p>
-    </section>
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
 
-    <footer>
-        <p>&copy; 2023 Your Website Name. All rights reserved.</p>
-    </footer>
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
