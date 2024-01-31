@@ -3,76 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>No Hello</title>
     <style>
-        /* Add your CSS styles here */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
-
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        h1 {
-            font-size: 36px;
-            color: #333;
-        }
-
-        p {
-            font-size: 18px;
-            color: #777;
-        }
-
-        .countdown {
-            font-size: 24px;
-            color: #555;
-            margin-top: 20px;
-        }
-
-        /* Customize your styles further */
+        body { font-family: Arial, sans-serif; }
+        .container { width: 80%; margin: 0 auto; }
+        .chat-box { background-color: #f0f0f0; padding: 10px; margin: 20px 0; }
+        .chat-line { margin: 5px 0; }
+        .timestamp { color: #888; }
+        .user { font-weight: bold; }
+        .message { margin-left: 5px; }
+        .instruction { margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Coming Soon</h1>
-        <p>We are working on something amazing and can't wait to share it with you!</p>
-        
-        <div class="countdown">
-            <p>Countdown to the big reveal:</p>
-            <div id="countdown"></div>
+<div class="container">
+    <h1>No Hello</h1>
+    <p>Don't Just Say "Hello" in Chat.</p>
+    <h2 id="currentDate"></h2>
+    <h3>Please Don't Say Just Hello In Chat</h3>
+    <div class="chat-box">
+        <div class="chat-line">
+            <span class="timestamp">2010-07-19 12:32:12</span>
+            <span class="user">you:</span>
+            <span class="message">Hi -- I'm working on [something] and I'm trying to do [etc...]</span>
+        </div>
+        <div class="chat-line">
+            <span class="timestamp">2010-07-19 12:32:15</span>
+            <span class="user">co-worker:</span>
+            <span class="message">Hello.</span>
+        </div>
+        <div class="chat-line">
+            <span class="user">CO-WORKER WAITS WHILE YOU PHRASE YOUR QUESTION</span>
+        </div>
+        <div class="chat-line">
+            <span class="timestamp">2010-07-19 12:34:01</span>
+            <span class="user">you:</span>
+            <span class="message">I'm working on [something] and I'm trying to do [etc...]</span>
+        </div>
+        <div class="chat-line">
+            <span class="timestamp">2010-07-19 12:35:21</span>
+            <span class="user">co-worker:</span>
+            <span class="message">Oh, that's [answer...]</span>
         </div>
     </div>
+    <p>It's as if you called someone on the phone and said "Hi!" and then put them on hold!</p>
+    <div class="instruction">
+        <p>Please do this instead:</p>
+        <div class="chat-box">
+            <div class="chat-line">
+                <span class="timestamp">2010-07-19 12:32:12</span>
+                <span class="user">you:</span>
+                <span class="message">Hi -- I'm working on [something] and I'm trying to do [etc...]</span>
+            </div>
+            <div class="chat-line">
+                <span class="timestamp">2010-07-19 12:33:32</span>
+                <span class="user">co-worker:</span>
+                <span class="message">[answers question]</span>
+            </div>
+        </div>
+    </div>
+    <section>
+        <p>Note that you get help minutes sooner, and you don't make them wait. Instead, the co-worker can start thinking about your question right away!</p>
+        <p>You're trying to be polite by not jumping right into the request, like you would do in person or on the phone. But Chat is neither of those things. Typing is much slower than talking. Instead of being polite, you are just making the other person wait for you to phrase your question, which is lost productivity.</p>
+        <p>The same goes for "Hello -- Are you there?", "Hi Bob -- quick question.", "Do you have a sec ?", "yt?" and "ping". Just ask the question!</p>
+        <p>If you feel it's brusque to simply say "Hi" and ask the question, you can do something like this:</p>
+        <div class="chat-box">
+            <div class="chat-line">
+                <span class="timestamp">2010-07-19 12:32:12</span>
+                <span class="user">you:</span>
+                <span class="message">Hi -- if you're not busy I was wondering if I could ask a question.  I'm working on [something] and I'm trying to do [etc...]</span>
+            </div>
+        </div>
+<p>Additionally, asking your question before getting a reply allows asynchronous communication. If the other party is away, and you leave before they come back, they can still answer your question, instead of just staring at a "Hello" and wondering what they missed.</p>
+        <p>Short link to this page: <a href="https://nohello.in/" target="_blank">http://nohello.com/</a>. (If you see that as someone's status, please be prepared to be ignored if you only say "Hello!").</p>
+    </section>
+</div>
 
-    <script>
-        // Add your countdown timer script here
-        // Replace the date below with your target launch date and time
-        var countDownDate = new Date("Dec 31, 2023 00:00:00").getTime();
+<script>
+    function formatDate(date) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
 
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
-
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
-        }, 1000);
-    </script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('currentDate').textContent = formatDate(new Date());
+    });
+</script>
 </body>
 </html>
